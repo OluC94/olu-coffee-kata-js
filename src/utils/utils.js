@@ -20,3 +20,11 @@ export const updateStampCount = (customerList, id) => {
         }
     }
 };
+
+export const redeemCoffee = (customerList, id) => {
+    for (const customer of customerList) {
+        if (customer.id === id && customer.coffeeCount > 0) {
+            customer.coffeeCount--;
+        }
+    }
+};
