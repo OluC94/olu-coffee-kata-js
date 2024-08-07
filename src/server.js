@@ -47,7 +47,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/customers", (req, res) => {
-    res.status(200).send({ msg: "within get /customers" });
+    res.status(200).send(customers);
 });
 
 app.post("/customers", (req, res) => {
