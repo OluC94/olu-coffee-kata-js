@@ -2,7 +2,6 @@ import cors from "cors";
 import express from "express";
 import morgan from "morgan";
 import { addNewCustomer } from "./utils/utils.js";
-// import { customers } from "./data/customers";
 
 const customers = [
     {
@@ -49,6 +48,13 @@ app.get("/", (req, res) => {
 
 app.post("/customers", (req, res) => {
     const { name } = req.body;
+
+    if (name === undefined || name.length < 1) {
+        console.log("bad req: ", customers);
+        res.status(400).send({ error: "bad request" });
+        return;
+    }
+
     addNewCustomer(customers, name);
     console.log(customers);
     res.status(200).send({ msg: "Customer successfully added" });
