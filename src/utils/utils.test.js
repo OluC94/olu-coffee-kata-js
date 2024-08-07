@@ -86,8 +86,31 @@ describe("update stamp count", () => {
         updateStampCount(customerList, 1);
         updateStampCount(customerList, 1);
         updateStampCount(customerList, 1);
-        console.log("c-list: ", customerList);
-        console.log("er2: ", expectedResult2);
         expect(customerList).toEqual(expectedResult2);
+    });
+    test("increments coffee count when 6 stamps achieved", () => {
+        const customerList = [
+            {
+                id: 1,
+                name: "Emily",
+                stampCount: 2,
+                coffeeCount: 0,
+            },
+            {
+                id: 2,
+                name: "Jamie",
+                stampCount: 1,
+                coffeeCount: 1,
+            },
+        ];
+
+        updateStampCount(customerList, 1);
+        updateStampCount(customerList, 1);
+        updateStampCount(customerList, 1);
+        updateStampCount(customerList, 1);
+        updateStampCount(customerList, 1);
+
+        expect(customerList[0].stampCount).toBe(1);
+        expect(customerList[0].coffeeCount).toBe(1);
     });
 });

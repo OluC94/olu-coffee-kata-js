@@ -12,6 +12,11 @@ export const updateStampCount = (customerList, id) => {
     for (const customer of customerList) {
         if (customer.id === id) {
             customer.stampCount++;
+
+            if (customer.stampCount === 6) {
+                customer.stampCount = 0;
+                customer.coffeeCount++;
+            }
         }
     }
 };
