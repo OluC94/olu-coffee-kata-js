@@ -1,7 +1,7 @@
 import cors from "cors";
 import express from "express";
 import morgan from "morgan";
-import { addNewCustomer } from "./utils/utils.js";
+import { addNewCustomer, updateStampCount } from "./utils/utils.js";
 
 const customers = [
     {
@@ -60,7 +60,9 @@ app.post("/customers", (req, res) => {
 
 app.put("/customers/:id", (req, res) => {
     const { id } = req.params;
-    res.send({ msg: "inside put /customers/:id", id: id });
+    const targetId = parseInt(id);
+    updateStampCount(customers, targetId);
+    res.status(200).send({ msg: "Stamps successfully updated" });
 });
 
 app.listen(PORT, () => {
