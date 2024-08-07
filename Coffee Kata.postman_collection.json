@@ -1,0 +1,235 @@
+{
+	"info": {
+		"_postman_id": "c6726a73-4bfa-47ed-b6db-32284efb7142",
+		"name": "Coffee Kata",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25218203"
+	},
+	"item": [
+		{
+			"name": "GET /",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /customers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Joe\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/customers",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /customers/:id",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/customers/1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"customers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /customers/:id - 404 not found",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/customers/20000",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"customers",
+						"20000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /customers/:id - 400 bad request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/customers/gfgfest",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"customers",
+						"gfgfest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /customers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/customers",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /customers/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/customers/4",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"customers",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /customers/:id - 404 not found",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/customers/90",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"customers",
+						"90"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /customers/:id - 400 bad request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/customers/badreq",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"customers",
+						"badreq"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /customers/4/redeem",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/customers/4/redeem",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"customers",
+						"4",
+						"redeem"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /customers/4/redeem - 404",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/customers/4000/redeem",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"customers",
+						"4000",
+						"redeem"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /customers/4/redeem - 400",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/customers/notanid/redeem",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"customers",
+						"notanid",
+						"redeem"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
