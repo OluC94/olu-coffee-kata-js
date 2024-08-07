@@ -58,6 +58,11 @@ app.post("/customers", (req, res) => {
     res.status(200).send({ msg: "Customer successfully added" });
 });
 
+app.put("/customers/:id", (req, res) => {
+    const { id } = req.params;
+    res.send({ msg: "inside put /customers/:id", id: id });
+});
+
 app.listen(PORT, () => {
     console.log(
         `Your express app started listening on ${PORT}, at ${new Date()}`
