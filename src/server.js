@@ -85,6 +85,7 @@ app.get("/customers/:id", (req, res) => {
 });
 
 app.put("/customers/:id", (req, res) => {
+    console.log(req.query);
     const { id } = req.params;
     const targetId = parseInt(id);
     if (isNaN(targetId)) {
@@ -100,6 +101,10 @@ app.put("/customers/:id", (req, res) => {
     } else {
         res.status(404).send({ error: "Customer not found" });
     }
+});
+
+app.put("/customers/:id/redeem", (req, res) => {
+    res.send({ msg: "redeem coffee" });
 });
 
 app.listen(PORT, () => {
