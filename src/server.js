@@ -1,7 +1,7 @@
 import cors from "cors";
 import express from "express";
 import morgan from "morgan";
-import { addNewCustomer } from "./utils/utils.js";
+import { addNewCustomer, updateStampCount } from "./utils/utils.js";
 
 const customers = [
     {
@@ -56,6 +56,24 @@ app.post("/customers", (req, res) => {
 
     addNewCustomer(customers, name);
     res.status(200).send({ msg: "Customer successfully added" });
+});
+
+app.put("/customers/:id", (req, res) => {
+    const { id } = req.params;
+    const targetId = parseInt(id);
+    if (isNaN(targetId)) {
+        res.status(400).send({ error: "bad request" });
+        return;
+    }
+
+    const isValidId =
+        customers.filter((customer) => customer.id === targetId).length === 1;
+    if (isValidId) {
+        updateStampCount(customers, targetId);
+        res.status(200).send({ msg: "Stamps successfully updated" });
+    } else {
+        res.status(404).send({ error: "Customer not found" });
+    }
 });
 
 app.listen(PORT, () => {

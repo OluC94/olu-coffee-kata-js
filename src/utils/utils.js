@@ -7,3 +7,11 @@ export const addNewCustomer = (customerList, name) => {
     };
     customerList.push(newCustomerData);
 };
+
+export const updateStampCount = (customerList, id) => {
+    for (const customer of customerList) {
+        if (customer.id === id) {
+            customer.stampCount++;
+        }
+    }
+};
