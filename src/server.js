@@ -18,6 +18,12 @@ app.get("/", (req, res) => {
     res.json({ msg: "Hello world" });
 });
 
+app.post("/customers", (req, res) => {
+    const { name } = req.body;
+    console.log(name);
+    res.status(200).send({ msg: "post successful" });
+});
+
 app.listen(PORT, () => {
     console.log(
         `Your express app started listening on ${PORT}, at ${new Date()}`
