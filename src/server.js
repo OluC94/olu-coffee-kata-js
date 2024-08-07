@@ -75,20 +75,19 @@ app.get("/customers/:id", (req, res) => {
         return;
     }
 
-    const isValidId =
-        customers.filter((customer) => customer.id === targetId).length === 1;
+    const targetCustomer = customers.filter(
+        (customer) => customer.id === targetId
+    );
+    const isValidId = targetCustomer.length === 1;
 
     if (isValidId) {
-        const targetCustomer = customers.filter(
-            (customer) => customer.id === targetId
-        );
         res.status(200).send(targetCustomer);
     } else {
         res.status(404).send({ error: "Customer not found" });
     }
 });
 
-app.put("/customers/:id", (req, res) => {
+app.post("/customers/:id", (req, res) => {
     const { id } = req.params;
     const targetId = parseInt(id);
     if (isNaN(targetId)) {
@@ -106,7 +105,7 @@ app.put("/customers/:id", (req, res) => {
     }
 });
 
-app.put("/customers/:id/redeem", (req, res) => {
+app.post("/customers/:id/redeem", (req, res) => {
     const { id } = req.params;
     const targetId = parseInt(id);
 
