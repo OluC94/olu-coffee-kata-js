@@ -46,6 +46,10 @@ app.get("/", (req, res) => {
     res.json({ msg: "Hello world" });
 });
 
+app.get("/customers", (req, res) => {
+    res.status(200).send(customers);
+});
+
 app.post("/customers", (req, res) => {
     const { name } = req.body;
 
