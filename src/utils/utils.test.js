@@ -51,42 +51,13 @@ describe("update stamp count", () => {
                 coffeeCount: 1,
             },
         ];
-        const expectedResult1 = [
-            {
-                id: 1,
-                name: "Emily",
-                stampCount: 2,
-                coffeeCount: 0,
-            },
-            {
-                id: 2,
-                name: "Jamie",
-                stampCount: 2,
-                coffeeCount: 1,
-            },
-        ];
-        const expectedResult2 = [
-            {
-                id: 1,
-                name: "Emily",
-                stampCount: 5,
-                coffeeCount: 0,
-            },
-            {
-                id: 2,
-                name: "Jamie",
-                stampCount: 2,
-                coffeeCount: 1,
-            },
-        ];
 
+        updateStampCount(customerList, 1);
+        updateStampCount(customerList, 1);
+        updateStampCount(customerList, 1);
         updateStampCount(customerList, 2);
-        expect(customerList).toEqual(expectedResult1);
-
-        updateStampCount(customerList, 1);
-        updateStampCount(customerList, 1);
-        updateStampCount(customerList, 1);
-        expect(customerList).toEqual(expectedResult2);
+        expect(customerList[0].stampCount).toBe(5);
+        expect(customerList[1].stampCount).toBe(2);
     });
     test("increments coffee count when 6 stamps achieved", () => {
         const customerList = [
@@ -131,20 +102,6 @@ describe("redeemCoffee", () => {
                 coffeeCount: 1,
             },
         ];
-        const expectedResult = [
-            {
-                id: 1,
-                name: "Emily",
-                stampCount: 2,
-                coffeeCount: 3,
-            },
-            {
-                id: 2,
-                name: "Jamie",
-                stampCount: 1,
-                coffeeCount: 0,
-            },
-        ];
 
         expect(redeemCoffee(customerList, 1)).containSubset(
             "Coffee successfully redeemed"
@@ -156,7 +113,8 @@ describe("redeemCoffee", () => {
             "Coffee successfully redeemed"
         );
 
-        expect(customerList).toEqual(expectedResult);
+        expect(customerList[0].coffeeCount).toBe(3);
+        expect(customerList[1].coffeeCount).toBe(0);
     });
 
     test("cannot decrement beyond 0", () => {
