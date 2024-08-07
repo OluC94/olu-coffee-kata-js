@@ -1,7 +1,9 @@
-# Minimal starter for _javascript_ express APIs.
+# Coffee Kata
 
-This is a minimal starter template for node.js API apps written in JavaScript (not TypeScript) using Express.
+## How to run this project on your local machine
 
-# Change me!
+1. Clone this repository onto your local machine and then navigate to the root directory:
 
-Be sure to change this readme to document your project - it's yours!
+2. Run the command `yarn` to install all dependencies
+
+3. Run the command `yarn dev` to launch the server on your local host using port `4000`
