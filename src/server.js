@@ -62,6 +62,28 @@ app.post("/customers", (req, res) => {
     res.status(200).send({ msg: "Customer successfully added" });
 });
 
+app.get("/customers/:id", (req, res) => {
+    const { id } = req.params;
+    const targetId = parseInt(id);
+
+    if (isNaN(targetId)) {
+        res.status(400).send({ error: "bad request" });
+        return;
+    }
+
+    const isValidId =
+        customers.filter((customer) => customer.id === targetId).length === 1;
+
+    if (isValidId) {
+        const targetCustomer = customers.filter(
+            (customer) => customer.id === targetId
+        );
+        res.status(200).send(targetCustomer);
+    } else {
+        res.status(404).send({ error: "Customer not found" });
+    }
+});
+
 app.put("/customers/:id", (req, res) => {
     const { id } = req.params;
     const targetId = parseInt(id);
