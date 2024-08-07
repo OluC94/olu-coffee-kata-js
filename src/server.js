@@ -14,6 +14,10 @@ app.use(express.json());
 //use the environment variable PORT, or 4000 as a fallback
 const PORT = process.env.PORT ?? 4000;
 
+app.get("/", (req, res) => {
+    res.json({ msg: "Hello world" });
+});
+
 app.listen(PORT, () => {
     console.log(
         `Your express app started listening on ${PORT}, at ${new Date()}`
