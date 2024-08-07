@@ -62,6 +62,16 @@ app.post("/customers", (req, res) => {
     res.status(200).send({ msg: "Customer successfully added" });
 });
 
+app.get("/customers/:id", (req, res) => {
+    const { id } = req.params;
+    const targetId = parseInt(id);
+
+    const targetCustomer = customers.filter(
+        (customer) => customer.id === targetId
+    );
+    res.status(200).send(targetCustomer);
+});
+
 app.put("/customers/:id", (req, res) => {
     const { id } = req.params;
     const targetId = parseInt(id);
