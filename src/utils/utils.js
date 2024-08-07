@@ -25,6 +25,8 @@ export const redeemCoffee = (customerList, id) => {
     for (const customer of customerList) {
         if (customer.id === id && customer.coffeeCount > 0) {
             customer.coffeeCount--;
+            return "Coffee successfully redeemed";
         }
     }
+    return "Customer has insufficient tokens";
 };

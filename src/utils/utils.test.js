@@ -146,9 +146,15 @@ describe("redeemCoffee", () => {
             },
         ];
 
-        redeemCoffee(customerList, 1);
-        redeemCoffee(customerList, 1);
-        redeemCoffee(customerList, 2);
+        expect(redeemCoffee(customerList, 1)).containSubset(
+            "Coffee successfully redeemed"
+        );
+        expect(redeemCoffee(customerList, 1)).containSubset(
+            "Coffee successfully redeemed"
+        );
+        expect(redeemCoffee(customerList, 2)).containSubset(
+            "Coffee successfully redeemed"
+        );
 
         expect(customerList).toEqual(expectedResult);
     });
@@ -170,6 +176,9 @@ describe("redeemCoffee", () => {
         ];
         redeemCoffee(customerList, 2);
         redeemCoffee(customerList, 2);
+        expect(redeemCoffee(customerList, 2)).toBe(
+            "Customer has insufficient tokens"
+        );
 
         expect(customerList[1].coffeeCount).toBe(0);
     });

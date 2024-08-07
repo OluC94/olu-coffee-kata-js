@@ -1,7 +1,11 @@
 import cors from "cors";
 import express from "express";
 import morgan from "morgan";
-import { addNewCustomer, updateStampCount } from "./utils/utils.js";
+import {
+    addNewCustomer,
+    redeemCoffee,
+    updateStampCount,
+} from "./utils/utils.js";
 
 const customers = [
     {
@@ -85,7 +89,6 @@ app.get("/customers/:id", (req, res) => {
 });
 
 app.put("/customers/:id", (req, res) => {
-    console.log(req.query);
     const { id } = req.params;
     const targetId = parseInt(id);
     if (isNaN(targetId)) {
@@ -104,7 +107,23 @@ app.put("/customers/:id", (req, res) => {
 });
 
 app.put("/customers/:id/redeem", (req, res) => {
-    res.send({ msg: "redeem coffee" });
+    const { id } = req.params;
+    const targetId = parseInt(id);
+
+    if (isNaN(targetId)) {
+        res.status(400).send({ error: "bad request" });
+        return;
+    }
+
+    const isValidId =
+        customers.filter((customer) => customer.id === targetId).length === 1;
+
+    if (isValidId) {
+        const redeemResult = redeemCoffee(customers, targetId);
+        res.status(200).send({ msg: redeemResult });
+    } else {
+        res.status(404).send({ error: "Customer not found" });
+    }
 });
 
 app.listen(PORT, () => {
