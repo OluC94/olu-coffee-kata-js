@@ -1,6 +1,34 @@
 import cors from "cors";
 import express from "express";
 import morgan from "morgan";
+import { addNewCustomer } from "./utils/utils.js";
+
+const customers = [
+    {
+        id: 1,
+        name: "Ali",
+        stampCount: 3,
+        coffeeCount: 0,
+    },
+    {
+        id: 2,
+        name: "Bilal",
+        stampCount: 5,
+        coffeeCount: 0,
+    },
+    {
+        id: 3,
+        name: "Charlie",
+        stampCount: 0,
+        coffeeCount: 2,
+    },
+    {
+        id: 4,
+        name: "Dani",
+        stampCount: 3,
+        coffeeCount: 1,
+    },
+];
 
 const app = express();
 
@@ -16,6 +44,18 @@ const PORT = process.env.PORT ?? 4000;
 
 app.get("/", (req, res) => {
     res.json({ msg: "Hello world" });
+});
+
+app.post("/customers", (req, res) => {
+    const { name } = req.body;
+
+    if (name === undefined || name.length < 1) {
+        res.status(400).send({ error: "bad request" });
+        return;
+    }
+
+    addNewCustomer(customers, name);
+    res.status(200).send({ msg: "Customer successfully added" });
 });
 
 app.listen(PORT, () => {
